@@ -1,0 +1,294 @@
+{
+  "name": "erika_contacts_n8n_v22_tracking",
+  "active": false,
+  "settings": {},
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 5
+            }
+          ]
+        }
+      },
+      "id": "n1",
+      "name": "Toutes les 5 minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1pP9R4lXsKgnaM-xjX9HD8rFQ0pqe9Bt6RD4mN_luiEY"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Contacts_n8n",
+          "mode": "name"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "n2",
+      "name": "Lire tous les contacts",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.2,
+      "position": [480, 300],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Vb3fOoZDzDRyszvN",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const normalize = (v) => (v || '').toString().trim().toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g, '');\nconst rows = $input.all().map(i => i.json);\n\nconst pending = rows.filter(r => {\n  const email = (r.email || r['e-mail'] || '').toString().trim();\n  const valeur = normalize(r.valeur);\n  return email && (valeur === 'a envoyer' || valeur === 'a_envoyer');\n});\n\nif (!pending.length) return [];\nconst first = pending[0];\n\nconst email = (first.email || first['e-mail'] || '').toString().trim();\n\n// Lien de tracking unique par contact\n// Format: https://n8n.zionworld.fr/webhook/track-clic?email=ENCODED_EMAIL\nconst trackingUrl = 'https://n8n.zionworld.fr/webhook/track-clic?email=' + encodeURIComponent(email);\n\nreturn [{\n  json: {\n    email: email,\n    valeur: first.valeur || '',\n    statuts: first.statuts || '',\n    dernier_resultat: first.dernier_resultat || '',\n    erreur: first.erreur || '',\n    clic: first.clic || '',\n    date_envoi_iso: new Date().toISOString(),\n    tracking_url: trackingUrl\n  }\n}];"
+      },
+      "id": "n3",
+      "name": "Selection 1 contact + tracking URL",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [740, 300]
+    },
+    {
+      "parameters": {
+        "fromEmail": "booking@zionworld.fr",
+        "toEmail": "={{ $json.email }}",
+        "subject": "Programmation 2026 - Princess Erika & Grand Chacal Bar",
+        "html": "<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n</head>\n<body style=\"margin:0;padding:0;background-color:#f4f4f4;font-family:Arial,Helvetica,sans-serif;\">\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#f4f4f4;padding:20px;\">\n<tr><td align=\"center\">\n<table width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#ffffff;border-radius:8px;overflow:hidden;\">\n<tr><td style=\"background-color:#8B0000;padding:20px;color:#ffffff;font-size:22px;font-weight:bold;\">Bonjour la PROGRAMMATION !</td></tr>\n<tr><td><img src=\"https://zionworld.fr/summer-mix-cover.png\" alt=\"Princess Erika & Grand Chacal Bar\" width=\"100%\" style=\"display:block;max-width:600px;height:auto;\"></td></tr>\n<tr><td style=\"padding:30px;color:#333;font-size:15px;line-height:1.6;\">\n<p>Je me permets de vous contacter pour vous présenter un projet artistique réunissant <strong>Princess Erika</strong> et le <strong>Grand Chacal Bar</strong> pour une tournée 2026.</p>\n<p>Nous recherchons actuellement des programmateurs et partenaires pour des dates festivals, salles et événements.</p>\n<p>👉 Si cela correspond à votre programmation, je serais ravi d'échanger avec vous.</p>\n</td></tr>\n<tr><td align=\"center\" style=\"padding:0 30px 20px 30px;\">\n<a href=\"={{ $json.tracking_url }}\" target=\"_blank\" style=\"display:inline-block;background-color:#8B0000;color:#ffffff;text-decoration:none;padding:12px 24px;border-radius:6px;font-size:15px;font-weight:bold;\">INFOS BOOKING</a>\n</td></tr>\n<tr><td style=\"padding:0 30px 30px 30px;color:#333;font-size:15px;line-height:1.6;\"><p style=\"margin:0;\">Bien cordialement,<br>Pierre — Manager Zion Tour<br>booking@zionworld.fr</p></td></tr>\n</table>\n</td></tr>\n</table>\n</body>\n</html>",
+        "options": {
+          "ccEmail": "mimbimi.pierre@gmail.com"
+        }
+      },
+      "id": "n4",
+      "name": "Envoyer Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [1020, 300],
+      "credentials": {
+        "smtp": {
+          "id": "EauojF5Qo1sGTLCq",
+          "name": "SMTP account 3"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1pP9R4lXsKgnaM-xjX9HD8rFQ0pqe9Bt6RD4mN_luiEY"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Contacts_n8n",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": ["email"],
+          "value": {
+            "email": "={{ $('Selection 1 contact + tracking URL').item.json.email }}",
+            "valeur": "traite",
+            "statuts": "ok",
+            "dernier_resultat": "envoye",
+            "date_envoi_iso": "={{ $('Selection 1 contact + tracking URL').item.json.date_envoi_iso }}",
+            "erreur": ""
+          }
+        },
+        "options": {}
+      },
+      "id": "n5",
+      "name": "Marqueur envoye",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.2,
+      "position": [1300, 200],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Vb3fOoZDzDRyszvN",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1pP9R4lXsKgnaM-xjX9HD8rFQ0pqe9Bt6RD4mN_luiEY"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Contacts_n8n",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": ["email"],
+          "value": {
+            "email": "={{ $('Selection 1 contact + tracking URL').item.json.email }}",
+            "valeur": "echec",
+            "statuts": "erreur",
+            "dernier_resultat": "echec",
+            "date_envoi_iso": "={{ $('Selection 1 contact + tracking URL').item.json.date_envoi_iso }}",
+            "erreur": "={{ $json.error?.message ?? $json.message ?? 'Erreur SMTP' }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "n6",
+      "name": "Marqueur echec",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.2,
+      "position": [1300, 420],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Vb3fOoZDzDRyszvN",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "track-clic",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "n7",
+      "name": "Webhook Tracking Clic",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [220, 600],
+      "webhookId": "track-clic-zion-v22"
+    },
+    {
+      "parameters": {
+        "jsCode": "const email = ($input.first().json.query?.email || '').toString().trim();\nif (!email) throw new Error('Email manquant dans la query');\nreturn [{ json: { email, date_clic: new Date().toISOString() } }];"
+      },
+      "id": "n8",
+      "name": "Extraire email du clic",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 600]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1pP9R4lXsKgnaM-xjX9HD8rFQ0pqe9Bt6RD4mN_luiEY"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Contacts_n8n",
+          "mode": "name"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "n9",
+      "name": "Lire contacts (tracking)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.2,
+      "position": [740, 600],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Vb3fOoZDzDRyszvN",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1pP9R4lXsKgnaM-xjX9HD8rFQ0pqe9Bt6RD4mN_luiEY"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Contacts_n8n",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": ["email"],
+          "value": {
+            "email": "={{ $('Extraire email du clic').item.json.email }}",
+            "clic": "clic",
+            "date_clic": "={{ $('Extraire email du clic').item.json.date_clic }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "n10",
+      "name": "Ecrire clic dans sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.2,
+      "position": [1020, 600],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Vb3fOoZDzDRyszvN",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://chacalbarband.wixsite.com/princesserika",
+        "options": {}
+      },
+      "id": "n11",
+      "name": "Rediriger vers site booking",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1300, 600]
+    }
+  ],
+  "connections": {
+    "Toutes les 5 minutes": {
+      "main": [[{"node": "Lire tous les contacts", "type": "main", "index": 0}]]
+    },
+    "Lire tous les contacts": {
+      "main": [[{"node": "Selection 1 contact + tracking URL", "type": "main", "index": 0}]]
+    },
+    "Selection 1 contact + tracking URL": {
+      "main": [[{"node": "Envoyer Email", "type": "main", "index": 0}]]
+    },
+    "Envoyer Email": {
+      "main": [
+        [{"node": "Marqueur envoye", "type": "main", "index": 0}],
+        [{"node": "Marqueur echec", "type": "main", "index": 0}]
+      ]
+    },
+    "Webhook Tracking Clic": {
+      "main": [[{"node": "Extraire email du clic", "type": "main", "index": 0}]]
+    },
+    "Extraire email du clic": {
+      "main": [[{"node": "Lire contacts (tracking)", "type": "main", "index": 0}]]
+    },
+    "Lire contacts (tracking)": {
+      "main": [[{"node": "Ecrire clic dans sheet", "type": "main", "index": 0}]]
+    },
+    "Ecrire clic dans sheet": {
+      "main": [[{"node": "Rediriger vers site booking", "type": "main", "index": 0}]]
+    }
+  },
+  "pinData": {},
+  "meta": null
+}

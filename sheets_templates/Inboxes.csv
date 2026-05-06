@@ -1,0 +1,3 @@
+inbox_id,provider,email,domain,warmup_enabled,warmup_status,max_daily_send,health_status,linked_campaigns,notes
+I001,Hostinger,booking@zionworld.fr,zionworld.fr,true,active,30,healthy,C001,
+

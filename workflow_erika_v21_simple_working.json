@@ -1,0 +1,233 @@
+{
+  "name": "erika_contacts_n8n_v21_simple_working",
+  "active": false,
+  "settings": {},
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 5
+            }
+          ]
+        }
+      },
+      "id": "n1",
+      "name": "Toutes les 5 minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1pP9R4lXsKgnaM-xjX9HD8rFQ0pqe9Bt6RD4mN_luiEY"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Contacts",
+          "mode": "name"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "n2",
+      "name": "Lire tous les contacts",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.2,
+      "position": [
+        500,
+        300
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Vb3fOoZDzDRyszvN",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const rows = $input.all().map(i => i.json);\nconst normalize = (v) => (v || '').toString().trim().toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g, '');\n\nconst pending = rows.filter(r => {\n  const email = (r.email || r['e-mail'] || '').toString().trim();\n  const statut = normalize(r.statut);\n  return email && statut !== 'envoye';\n});\n\nif (!pending.length) return [];\n\nconst first = pending[0];\nreturn [{\n  json: {\n    email: (first.email || first['e-mail'] || '').toString().trim(),\n    statut: first.statut || '',\n    clic: first.clic || ''\n  }\n}];"
+      },
+      "id": "n3",
+      "name": "Selection 1 contact",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        780,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "booking@zionworld.fr",
+        "toEmail": "={{ $json.email }}",
+        "subject": "Programmation 2026 - Princess Erika & Grand Chacal Bar",
+        "html": "<!DOCTYPE html><html lang=\"fr\"><body style=\"font-family:Arial,Helvetica,sans-serif;line-height:1.5\"><p>Salut la PROGRAMMATION !!</p><p>Je vous propose Princess Erika & Grand Chacal Bar pour votre programmation 2026.</p><p><a href=\"https://chacalbarband.wixsite.com/princesserika\" target=\"_blank\">Infos booking</a></p><p><img src=\"https://zionworld.fr/summer-mix-cover.png\" alt=\"Princess Erika\" style=\"max-width:100%;height:auto;\"></p><p>Bien cordialement,<br>PIERRE MANAGER</p></body></html>",
+        "options": {
+          "ccEmail": "mimbimi.pierre@gmail.com"
+        }
+      },
+      "id": "n4",
+      "name": "Envoyer Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1060,
+        300
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "EauojF5Qo1sGTLCq",
+          "name": "SMTP account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1pP9R4lXsKgnaM-xjX9HD8rFQ0pqe9Bt6RD4mN_luiEY"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Contacts",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [
+            "email"
+          ],
+          "value": {
+            "email": "={{ $json.email }}",
+            "statut": "envoye",
+            "clic": "={{ $json.clic ?? '' }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "n5",
+      "name": "Marqueur envoye",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.2,
+      "position": [
+        1340,
+        220
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Vb3fOoZDzDRyszvN",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1pP9R4lXsKgnaM-xjX9HD8rFQ0pqe9Bt6RD4mN_luiEY"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Contacts",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [
+            "email"
+          ],
+          "value": {
+            "email": "={{ $json.email }}",
+            "statut": "echec",
+            "clic": "={{ $json.clic ?? '' }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "n6",
+      "name": "Marqueur echec",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.2,
+      "position": [
+        1340,
+        380
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Vb3fOoZDzDRyszvN",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Toutes les 5 minutes": {
+      "main": [
+        [
+          {
+            "node": "Lire tous les contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lire tous les contacts": {
+      "main": [
+        [
+          {
+            "node": "Selection 1 contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Selection 1 contact": {
+      "main": [
+        [
+          {
+            "node": "Envoyer Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envoyer Email": {
+      "main": [
+        [
+          {
+            "node": "Marqueur envoye",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Marqueur echec",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": null
+}

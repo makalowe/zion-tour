@@ -1,0 +1,3 @@
+artist_id,artist_name,genre,city,country,booking_url,epk_url,tech_rider_url,fee_min_eur,fee_target_eur,manager_name,manager_email,manager_phone,active,notes
+A001,Princess Erika & Grand Chacal Bar,Reggae/Afro-Funk,Paris,France,https://chacalbarband.wixsite.com/princesserika,,,1500,2500,Pierre Mimbimi,booking@zionworld.fr,,true,
+

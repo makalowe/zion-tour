@@ -1,0 +1,5 @@
+template_id,artist_id,lang,step_name,subject,body_text,body_html,cta_type,active,notes
+T001,A001,fr,initial,Programmation 2026 - Princess Erika & Grand Chacal Bar,"Salut la PROGRAMMATION !!\n\nJe vous propose Princess Erika & Grand Chacal Bar pour votre programmation 2026.\n\nInfos booking : https://chacalbarband.wixsite.com/princesserika\n\nBien cordialement,\nPIERRE MANAGER",,booking_link,true,
+T002,A001,fr,followup_1,Relance - Programmation 2026,"Bonjour,\n\nJe me permets de revenir vers vous concernant Princess Erika & Grand Chacal Bar.\n\nJe reste disponible pour vous envoyer les informations complementaires.\n\nBien cordialement,\nPIERRE MANAGER",,reply,true,
+T003,A001,fr,followup_2,Derniere relance - Programmation 2026,"Bonjour,\n\nDerniere relance rapide concernant Princess Erika & Grand Chacal Bar pour votre programmation 2026.\n\nSi ce n'est pas le bon moment, je pourrai vous recontacter plus tard.\n\nBien cordialement,\nPIERRE MANAGER",,reply,true,
+

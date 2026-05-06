@@ -1,0 +1,3 @@
+campaign_id,artist_id,campaign_name,channel,start_date,end_date,target_country,target_city,target_segment,daily_limit_per_inbox,total_sent,total_replies,total_positive_replies,total_meetings,total_bookings,active,notes
+C001,A001,Princess Erika 2026 - Festivals,Cold Email,2026-04-23,,France,,Festivals et salles,30,0,0,0,0,0,true,
+

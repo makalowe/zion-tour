@@ -1,0 +1,433 @@
+{
+  "items": [
+    {
+      "festival_name": "Groezrock",
+      "city": "Meerhout",
+      "month": "mai"
+    },
+    {
+      "festival_name": "Festival Retropop",
+      "city": "Emmen",
+      "month": "juin"
+    },
+    {
+      "festival_name": "Paradise City Festival",
+      "city": "Près de Bruxelles",
+      "month": "juin"
+    },
+    {
+      "festival_name": "Graspop Metal Meeting",
+      "city": "Dessel",
+      "month": "juin"
+    },
+    {
+      "festival_name": "Couleur Café",
+      "city": "Bruxelles",
+      "month": "juin"
+    },
+    {
+      "festival_name": "Festival Francofolies de Spa",
+      "city": "Spa",
+      "month": "juin"
+    },
+    {
+      "festival_name": "Rock Werchter",
+      "city": "Près de Louvain",
+      "month": "juillet"
+    },
+    {
+      "festival_name": "Les Ardentes",
+      "city": "Liège",
+      "month": "juillet"
+    },
+    {
+      "festival_name": "Cactus Festival",
+      "city": "Bruges",
+      "month": "juillet"
+    },
+    {
+      "festival_name": "Dour Festival",
+      "city": "Dour",
+      "month": "juillet"
+    },
+    {
+      "festival_name": "Tomorrowland",
+      "city": "Boom",
+      "month": "juillet"
+    },
+    {
+      "festival_name": "Sfinks Mixed",
+      "city": "Boechout",
+      "month": "juillet"
+    },
+    {
+      "festival_name": "Lokerse Feesten",
+      "city": "Lokeren",
+      "month": "juillet"
+    },
+    {
+      "festival_name": "Reggae Geel",
+      "city": "Geel",
+      "month": "août"
+    },
+    {
+      "festival_name": "Antilliaanse Feesten",
+      "city": "Hoogstraten",
+      "month": "août"
+    },
+    {
+      "festival_name": "Pukkelpop",
+      "city": "Hasselt",
+      "month": "août"
+    },
+    {
+      "festival_name": "Alcatraz Hard Rock & Metal Festival",
+      "city": "Courtrai",
+      "month": "août"
+    },
+    {
+      "festival_name": "Laundry Day",
+      "city": "Anvers",
+      "month": "août"
+    },
+    {
+      "festival_name": "FiestaCity",
+      "city": "Verviers",
+      "month": "septembre"
+    },
+    {
+      "festival_name": "Leffingeleuren",
+      "city": "Leffinge",
+      "month": "septembre"
+    },
+    {
+      "festival_name": "Bear Rock Festival",
+      "city": "Andenne",
+      "month": "septembre"
+    },
+    {
+      "festival_name": "l",
+      "city": "Eupen",
+      "month": "septembre"
+    },
+    {
+      "festival_name": "Absolutely Free Festival",
+      "city": "Genk",
+      "month": "septembre"
+    },
+    {
+      "festival_name": "I Love Techno Europe",
+      "city": "Gand",
+      "month": "octobre"
+    },
+    {
+      "festival_name": "Gent Jazz Festival",
+      "city": "Gand",
+      "month": "décembre"
+    }
+  ],
+  "emails": 0,
+  "no_email": 25,
+  "rows": [
+    {
+      "email": "",
+      "festival_name": "Groezrock",
+      "city": "Meerhout",
+      "month": "mai",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Festival Retropop",
+      "city": "Emmen",
+      "month": "juin",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Paradise City Festival",
+      "city": "Près de Bruxelles",
+      "month": "juin",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Graspop Metal Meeting",
+      "city": "Dessel",
+      "month": "juin",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Couleur Café",
+      "city": "Bruxelles",
+      "month": "juin",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Festival Francofolies de Spa",
+      "city": "Spa",
+      "month": "juin",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Rock Werchter",
+      "city": "Près de Louvain",
+      "month": "juillet",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Les Ardentes",
+      "city": "Liège",
+      "month": "juillet",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Cactus Festival",
+      "city": "Bruges",
+      "month": "juillet",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Dour Festival",
+      "city": "Dour",
+      "month": "juillet",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Tomorrowland",
+      "city": "Boom",
+      "month": "juillet",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Sfinks Mixed",
+      "city": "Boechout",
+      "month": "juillet",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Lokerse Feesten",
+      "city": "Lokeren",
+      "month": "juillet",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Reggae Geel",
+      "city": "Geel",
+      "month": "août",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Antilliaanse Feesten",
+      "city": "Hoogstraten",
+      "month": "août",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Pukkelpop",
+      "city": "Hasselt",
+      "month": "août",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Alcatraz Hard Rock & Metal Festival",
+      "city": "Courtrai",
+      "month": "août",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Laundry Day",
+      "city": "Anvers",
+      "month": "août",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "FiestaCity",
+      "city": "Verviers",
+      "month": "septembre",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Leffingeleuren",
+      "city": "Leffinge",
+      "month": "septembre",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Bear Rock Festival",
+      "city": "Andenne",
+      "month": "septembre",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "l",
+      "city": "Eupen",
+      "month": "septembre",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Absolutely Free Festival",
+      "city": "Genk",
+      "month": "septembre",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "I Love Techno Europe",
+      "city": "Gand",
+      "month": "octobre",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    },
+    {
+      "email": "",
+      "festival_name": "Gent Jazz Festival",
+      "city": "Gand",
+      "month": "décembre",
+      "country": "Belgique",
+      "website": "",
+      "source_url": "https://www.plugthejack.com/fr/studios-repetition/festivals-musique-belgique",
+      "checked_pages": "",
+      "status": "a verifier",
+      "notes": "Email non visible automatiquement"
+    }
+  ]
+}
